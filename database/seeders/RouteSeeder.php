@@ -12,6 +12,11 @@ class RouteSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $routes1 = new Route;
+        $routes1->grade = "The Wall";
+        $routes1->county = "Sandyford";
+        $routes1->description = "10";
+        $routes1->style = "15";
+        $routes1->save();
     }
 }
