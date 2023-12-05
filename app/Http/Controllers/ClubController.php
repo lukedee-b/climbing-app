@@ -12,7 +12,7 @@ class ClubController extends Controller
      */
     public function index()
     {
-        $clubs = Club::orderBy('created_at', 'desc')->paginate(8);
+        $clubs = Club::orderBy('created_at', 'desc')->paginate(800);
 
         return view('clubs.index', [
             'clubs' => $clubs 
@@ -59,6 +59,7 @@ class ClubController extends Controller
         $club->location = $request->location;
         $club->number_of_walls = $request->number_of_walls;
         $club->price = $request->price;
+        $club->facilities = $request->facilities;
         $club->cafe = $request->cafe;
         $club->save();
 
@@ -130,7 +131,7 @@ class ClubController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
         $club  = Club::findOrFail($id);
         $club->delete();

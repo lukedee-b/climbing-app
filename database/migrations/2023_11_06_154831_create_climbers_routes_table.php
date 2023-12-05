@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('climbers_routes', function (Blueprint $table) {
             $table->id();
 
-            $table->string('climber_id');
             $table->foreignId('climber_id');
-            $table->string('route_id');
             $table->foreignId('route_id');
+            
+            $table->foreign('climber_id')->references('id')->on('climbers')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('route_id')->references('id')->on('routes')->onUpdate('cascade')->onDelete('restrict');
             
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('climbers_routes');
+        // Schema::dropIfExists('climbers_routes');
     }
 };

@@ -12,7 +12,7 @@ class RouteController extends Controller
      */
     public function index()
     {
-        $routes = Route::orderBy('created_at', 'desc')->paginate(8);
+        $routes = Route::orderBy('created_at', 'desc')->paginate(800);
 
         return view('routes.index', [
             'routes' => $routes 
@@ -122,7 +122,7 @@ class RouteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
         $route  = Route::findOrFail($id);
         $route->delete();

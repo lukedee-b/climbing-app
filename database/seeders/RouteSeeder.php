@@ -69,46 +69,46 @@ class Routeseeder extends Seeder
         $Routes8->style = "Bouldering";
         $Routes8->save();
 
-        $Routes8 = new Route;
-        $Routes8->grade = "8c";
-        $Routes8->county = "Donegal";
-        $Routes8->description = "The 'Mystic Maze' is a mind-bending route with hidden pockets, creating a puzzle-solving challenge as climbers decipher a cryptic sequence of moves, combined with agility and balance, to unlock the route's secrets.";
-        $Routes8->style = "Lead";
-        $Routes8->save();
+        $Routes9 = new Route;
+        $Routes9->grade = "6b";
+        $Routes9->county = "Donegal";
+        $Routes9->description = "This one is pretty boring just a awkward ladder.";
+        $Routes9->style = "Lead";
+        $Routes9->save();
 
-        $Routes8 = new Route;
-        $Routes8->grade = "8b";
-        $Routes8->county = "Wicklow";
-        $Routes8->description = "The 'Skyline Summit' is an exhilarating lead climbing route that ascends a vertical face with a mix of technical crimps, delicate balance moves, and dynamic clips, testing a climber's endurance and mental focus.";
-        $Routes8->style = "Lead";
-        $Routes8->save();
+        $Routes10 = new Route;
+        $Routes10->grade = "8b";
+        $Routes10->county = "Wicklow";
+        $Routes10->description = "The 'Skyline Summit' is an exhilarating lead climbing route that ascends a vertical face with a mix of technical crimps, delicate balance moves, and dynamic clips, testing a climber's endurance and mental focus.";
+        $Routes10->style = "Lead";
+        $Routes10->save();
 
-        $Routes8 = new Route;
-        $Routes8->grade = "9b";
-        $Routes8->county = "Wicklow";
-        $Routes8->description = "Climbers face the ultimate endurance challenge on 'Eternal Overhang,' a relentless lead climbing route that conquers a sustained overhang with a series of strenuous jugs and relentless pump-inducing cruxes.";
-        $Routes8->style = "Lead";
-        $Routes8->save();
+        $Routes11 = new Route;
+        $Routes11->grade = "9b";
+        $Routes11->county = "Wicklow";
+        $Routes11->description = "Climbers face the ultimate endurance challenge on 'Eternal Overhang,' a relentless lead climbing route that conquers a sustained overhang with a series of strenuous jugs and relentless pump-inducing cruxes.";
+        $Routes11->style = "Lead";
+        $Routes11->save();
 
-        $Routes8 = new Route;
-        $Routes8->grade = "7c";
-        $Routes8->county = "Limerick";
-        $Routes8->description = "Embark on a journey of exposure and commitment in 'Abyssal Arête,' a lead climbing route that navigates a sheer arete high above the ground, demanding precision footwork and a bold spirit.";
-        $Routes8->style = "Lead";
-        $Routes8->save();
+        $Routes12 = new Route;
+        $Routes12->grade = "7c";
+        $Routes12->county = "Limerick";
+        $Routes12->description = "Embark on a journey of exposure and commitment in 'Abyssal Arête,' a lead climbing route that navigates a sheer arete high above the ground, demanding precision footwork and a bold spirit.";
+        $Routes12->style = "Lead";
+        $Routes12->save();
 
-        $Routes8 = new Route;
-        $Routes8->grade = "9b";
-        $Routes8->county = "Clare";
-        $Routes8->description = "The 'Echoing Cavern' is a lead climbing route that takes climbers deep into a cave, utilizing technical stemming, stemming, and stemming techniques to navigate the tight, echo-filled space.";
-        $Routes8->style = "Lead";
-        $Routes8->save();
+        $Routes13 = new Route;
+        $Routes13->grade = "9b";
+        $Routes13->county = "Clare";
+        $Routes13->description = "The 'Echoing Cavern' is a lead climbing route that takes climbers deep into a cave, utilizing technical stemming, stemming, and stemming techniques to navigate the tight, echo-filled space.";
+        $Routes13->style = "Lead";
+        $Routes13->save();
 
-        $Routes8 = new Route;
-        $Routes8->grade = "9a";
-        $Routes8->county = "Clare";
-        $Routes8->description = "Brace for a mental challenge on 'Mindbender Mantle,' a lead climbing route that combines perplexing route-finding with a series of strenuous mantles, pushing climbers to solve the puzzle in mid-air.";
-        $Routes8->style = "Lead";
-        $Routes8->save();
+        $Routes14 = new Route;
+        $Routes14->grade = "9a";
+        $Routes14->county = "Clare";
+        $Routes14->description = "Brace for a mental challenge on 'Mindbender Mantle,' a lead climbing route that combines perplexing route-finding with a series of strenuous mantles, pushing climbers to solve the puzzle in mid-air.";
+        $Routes14->style = "Lead";
+        $Routes14->save();
     }
 }

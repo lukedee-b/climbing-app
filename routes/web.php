@@ -2,12 +2,22 @@
 
 use App\Http\Controllers\ProfileController;
 //use App\Http\Controllers\ClubController;
-use App\Http\Controllers\RouteController;
+// use App\Http\Controllers\RouteController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ClimberController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
+use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\Admin\RouteController as AdminRouteController;
+use App\Http\Controllers\User\RouteController as UserRouteController;
+
+use App\Http\Controllers\Admin\ClimberController as AdminClimberController;
+use App\Http\Controllers\User\ClimberController as UserClimberController;
+
+use App\Http\Controllers\Admin\ClubController as AdminClubController;
+use App\Http\Controllers\User\ClubController as UserClubController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,41 +33,42 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
 Route::middleware('auth')->group(function () {
-
+    // Route::resource('clubs', ClubController::class);
+    // Route::resource('routes', RouteController::class);
+    // Route::resource('climbers', ClimberController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('/clubs', [ClubController::class, 'index'])->name('clubs.index');
-    Route::post('/clubs', [ClubController::class, 'store'])->name('clubs.store');
-    Route::get('/clubs/create', [ClubController::class, 'create'])->name('clubs.create');
-    Route::get('/clubs/{club}', [ClubController::class, 'show'])->name('clubs.show');
-    Route::get('/clubs/{club}/edit', [ClubController::class, 'edit'])->name('clubs.edit');
-    Route::put('/clubs/{club}', [ClubController::class, 'update'])->name('clubs.update');
-    Route::delete('/clubs/{club}', [ClubController::class, 'delete'])->name('clubs.destroy');
-
-    Route::get('/climbers', [ClimberController::class, 'index'])->name('climbers.index');
-    Route::post('/climbers', [ClimberController::class, 'store'])->name('climbers.store');
-    Route::get('/climbers/create', [ClimberController::class, 'create'])->name('climbers.create');
-    Route::get('/climbers/{climber}', [ClimberController::class, 'show'])->name('climbers.show');
-    Route::get('/climbers/{climber}/edit', [ClimberController::class, 'edit'])->name('climbers.edit');
-    Route::put('/climbers/{climber}', [ClimberController::class, 'update'])->name('climbers.update');
-    Route::delete('/climbers/{climber}', [ClimberController::class, 'delete'])->name('climbers.destroy');
-
-    Route::get('/routes', [RouteController::class, 'index'])->name('routes.index');
-    Route::post('/routes', [RouteController::class, 'store'])->name('routes.store');
-    Route::get('/routes/create', [RouteController::class, 'create'])->name('routes.create');
-    Route::get('/routes/{route}', [RouteController::class, 'show'])->name('routes.show');
-    Route::get('/routes/{route}/edit', [RouteController::class, 'edit'])->name('routes.edit');
-    Route::put('/routes/{route}', [RouteController::class, 'update'])->name('routes.update');
-    Route::delete('/routes/{route}', [RouteController::class, 'delete'])->name('routes.destroy');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+
+Route::resource('/routes', UserRouteController::class)
+    ->middleware(['auth', 'role:user,admin'])
+    ->names('user.routes')
+    ->only(['index', 'show']);
+
+Route::resource('/admin/routes', AdminRouteController::class)->middleware(['auth', 'role:admin'])->names('admin.routes');
+
+
+Route::resource('/climbers', UserClimberController::class)
+    ->middleware(['auth', 'role:user,admin'])
+    ->names('user.climbers')
+    ->only(['index', 'show']);
+
+Route::resource('/admin/climbers', AdminClimberController::class)->middleware(['auth', 'role:admin'])->names('admin.climbers');
+
+
+Route::resource('/clubs', UserClubController::class)
+    ->middleware(['auth', 'role:user,admin'])
+    ->names('user.clubs')
+    ->only(['index', 'show']);
+
+Route::resource('/admin/clubs', AdminClubController::class)->middleware(['auth', 'role:admin'])->names('admin.clubs');
 
 require __DIR__.'/auth.php';

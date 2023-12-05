@@ -12,10 +12,9 @@ class ClimberController extends Controller
      */
     public function index()
     {
-        $climbers = Climber::orderBy('created_at', 'desc')->paginate(8);
+        $climbers = Climber::paginate(200);
 
-        return view('climbers.index', [
-            'climbers' => $climbers 
+        return view('climbers.index', ['climbers' => $climbers 
         ]);
     }
 
@@ -123,7 +122,7 @@ class ClimberController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
         $climber  = Climber::findOrFail($id);
         $climber->delete();

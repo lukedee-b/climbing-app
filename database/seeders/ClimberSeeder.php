@@ -80,7 +80,15 @@ class ClimberSeeder extends Seeder
         $Climber10->name = "Miho Nonaka";
         $Climber10->coach = "Luke Skywalker";
         $Climber10->level = "Beginner";
-        $Climber10->club_id = "6";
+        $Climber10->club_id = "5";
         $Climber10->save();
+
+        $numOfClimbers = 10;
+        
+
+        // foreach(Route::all() as $route){
+        //     $climbers = Climber::inRandomOrder()->take(rand(1,$numOfClimbers))->pluck('id');
+        //     $route->climbers()->attach($climbers);
+        // }
     }
 }
