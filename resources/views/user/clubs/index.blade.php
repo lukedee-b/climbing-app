@@ -65,7 +65,7 @@
                         @endforelse
                     </tbody>
                 </table>
-                {{ $clubs->links() }}
+                {{-- {{ $clubs->links() }} --}}
                 </div>
             </div>
         </div>

@@ -1,10 +1,14 @@
 
-<x-app-layout>
-    <x-slot name="header">
-    </x-slot>
-    <x-slot name="content">
+@extends('layouts.admin')
 
-<h3>Edit Club</h3>    
+@section('header')
+<h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    {{ __('Clubs') }}
+</h2>
+@endsection
+
+
+@section('content')  
 
 {{-- @if ($errors->any())
     <div class="alert alert-danger">
@@ -50,10 +54,10 @@
         @endif
     </div>
     <div>
-        <label for="">Facilites</label>
-        <input type="text" name="facilites" id="facilites" value="{{ old('facilites')? : $club->facilites }}"/>
-        @if($errors->has('facilites'))
-        <span>{{ $errors->first('facilites') }}</span>
+        <label for="">Facilities</label>
+        <input type="text" name="facilities" id="facilities" value="{{ old('facilities')? : $club->facilities }}"/>
+        @if($errors->has('facilities'))
+        <span>{{ $errors->first('facilities') }}</span>
         @endif
     </div>
     <div>
@@ -63,10 +67,9 @@
         <span>{{ $errors->first('cafe') }}</span>
         @endif
     </div>
-    <button type="submit" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800" type="submit">Create</button>
+    <button type="submit" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800" type="submit">Submit</button>
     <button type="submit" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"><a href="{{ route('admin.clubs.index') }}">Back</button>
 
 </form>
 
-</x-slot>
-</x-app-layout>
+@endsection

@@ -14,7 +14,7 @@ class ClimberController extends Controller
     public function __construct(){
 
     }
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -128,7 +128,7 @@ class ClimberController extends Controller
             $climber->save();
     
             return redirect()       
-                ->route('climbers.index')
+                ->route('admin.climbers.index')
                 ->with('status', ' Updated a climber');
         
     }

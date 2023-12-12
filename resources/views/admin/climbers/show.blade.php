@@ -19,8 +19,12 @@
                             <p><b>Name:</b> {{ $climber->name }}</p>
                             <p><b>Coach:</b> {{ $climber->coach }}</p>
                             <p><b>Level:</b> {{ $climber->level }}</p>  
-                            <p><b>Club:</b> {{ $climber->club_id }}</p>   
-                        
+                            <p><b>Club:</b> {{ $climber->club->name }}</p>   
+                            <p><b>Routes Completed</b>
+                                @foreach($climber->routes as $routes)
+                                {{ $routes->id }}
+                                @endforeach
+                            </p>
                         </div>
                             
                             {{-- <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"> --}}

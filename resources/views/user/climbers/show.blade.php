@@ -16,7 +16,12 @@
                             <p><b>Name:</b> {{ $climbers->name }}</p>
                             <p><b>Coach:</b> {{ $climbers->coach }}</p>
                             <p><b>Level:</b> {{ $climbers->level }}</p>  
-                            <p><b>Club:</b> {{ $climbers->club_id }}</p>   
+                            <p><b>Club:</b> {{ $climbers->club->name }}</p>   
+                            <p><b>Routes Completed</b>
+                                @foreach($climbers->routes as $routes)
+                                {{ $routes->id }}
+                                @endforeach
+                            </p>
                         
                         </div>
                             

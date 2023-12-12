@@ -1,10 +1,14 @@
 
-<x-app-layout>
-    <x-slot name="header">
-    </x-slot>
-    <x-slot name="content">
-<h3>Edit Climber</h3>    
+@extends('layouts.admin')
 
+@section('header')
+<h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    {{ __('Climbers') }}
+</h2>
+@endsection
+
+
+@section('content')
 {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -48,9 +52,8 @@
         <span>{{ $errors->first('club_id') }}</span>
         @endif
     </div>
-    <button type="submit" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Update</button>
+    <button type="submit" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Submit</button>
     <button type="submit" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"><a href="{{ route('admin.climbers.index') }}">Back</button>
 </form>
-</form>
-</x-slot>
-</x-app-layout>
+
+@endsection

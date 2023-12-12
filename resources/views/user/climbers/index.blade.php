@@ -25,6 +25,9 @@
                                 <th scope="col" class="px-6 py-3">
                                     Club_id
                                 </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Routes Completed
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,18 +43,24 @@
                                 {{ $climber->level }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $climber->club_id }}
+                                {{ $climber->club->name }}
+                            </td>
+                            <td class="px-6 py-4">
+                                @foreach($climber->routes as $routes)
+                                {{ $routes->id }}
+                                @endforeach
                             </td>
                             <td class="px-6 py-4">
                                 <button type="submit" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"><a href="{{ route('user.climbers.show', $climber->id) }}">More</a></button>
                             </td>
                         </tr>
 
-                        @empty
-                        <h4>No Climbers Found!</h4>
-                        @endforelse
-                    </tbody>
-                </table>
+                            @empty
+                            <h4>No Climbers Found!</h4>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

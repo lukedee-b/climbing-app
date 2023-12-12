@@ -15,7 +15,7 @@
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                             
-                            <img width="150" src={{ asset("storage/images" . $route->route_image) }} />
+                            <img width="150" src={{ asset("storage/images/" . $route->route_image) }} />
                             <p><b>Grade:</b> {{ $route->grade }}</p>
                             <p><b>County:</b> {{ $route->county }}</p>
                             <p><b>Description:</b> {{ $route->description }}</p>
