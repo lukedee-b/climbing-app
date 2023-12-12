@@ -10,11 +10,11 @@ class Climber extends Model
     use HasFactory;
 
     public function routes(){
-        return hasMany(Route::class);
+        return $this->belongsToMany(Route::class);
     }
 
-    public function clubs(){
-        return belongsTo(Club::class);
+    public function club(){
+        return $this->belongsTo(Club::class);
     }
 
 }

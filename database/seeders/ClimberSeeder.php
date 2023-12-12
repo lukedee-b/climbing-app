@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Club;
 use App\Models\Climber;
 
 class ClimberSeeder extends Seeder
@@ -83,7 +84,20 @@ class ClimberSeeder extends Seeder
         $Climber10->club_id = "5";
         $Climber10->save();
 
-        $numOfClimbers = 10;
+
+
+        $Climber1->routes()->attach([1,2,3,4,5,6,8,9,11,12,13,14]);
+        $Climber2->routes()->attach([1,2,3,6,7,8,9,12,14]);
+        $Climber3->routes()->attach([3,4,7,8,9,10,12]);
+        $Climber4->routes()->attach([4,5,6,7,9,10,14]);
+        $Climber5->routes()->attach([1,3,4,5,7,8,9,10,11,12,13]);
+        $Climber6->routes()->attach([1,2,3,4,5,10,11,12,13,14]);
+        $Climber7->routes()->attach([2,6,7,8,9,10,11]);
+        $Climber8->routes()->attach([1,2,3,4,5,6,10,11,12,14]);
+        $Climber9->routes()->attach([1,2,3,4,6,7,9,10,13,14]);
+        $Climber10->routes()->attach([1,2,3,9,10,13,14]);
+
+        // $numOfClimbers = 10;
         
 
         // foreach(Route::all() as $route){

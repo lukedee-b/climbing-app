@@ -1,20 +1,31 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Route;
+use App\Models\Club;
 use App\Models\Climber;
+use Auth;
 
 class ClimberController extends Controller
 {
+    public function __construct(){
+
+    }
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+
+        $climber = Climber::all();
+
         $climbers = Climber::paginate(200);
 
-        return view('climbers.index', ['climbers' => $climbers 
+        return view('admin.climbers.index', ['climbers' => $climbers 
         ]);
     }
 
@@ -23,7 +34,11 @@ class ClimberController extends Controller
      */
     public function create()
     {
-        return view('climbers.create');
+        
+        $climbers = Climber::all();
+
+        return view('admin.climbers.create');
+        // ->with('clubs', $clubs)
     }
 
     /**
@@ -57,7 +72,7 @@ class ClimberController extends Controller
         $climber->club_id = $request->club_id;
         $climber->save();
 
-        return redirect()->route('climbers.index')->with('status', 'Created a new climber');
+        return redirect()->route('admin.climbers.index')->with('status', 'Created a new climber');
     }
 
     /**
@@ -66,7 +81,7 @@ class ClimberController extends Controller
     public function show(string $id)
     {
         $climber = Climber::findOrFail($id);
-        return view('climbers.show', [
+        return view('admin.climbers.show', [
             'climber' => $climber
         ]);
     }
@@ -77,7 +92,7 @@ class ClimberController extends Controller
     public function edit(string $id)
     {
         $climber = Climber::findOrFail($id);
-        return view('climbers.edit', [
+        return view('admin.climbers.edit', [
             'climber' => $climber
         ]);
     }
@@ -95,7 +110,6 @@ class ClimberController extends Controller
                 'coach'=> 'required|string|min:1|max:1000',
                 'level'=> 'required|string|min:1|max:1000',
                 'club_id'=> 'required|string|min:1|max:1000',
-    
     
             ];
     
@@ -122,11 +136,11 @@ class ClimberController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(string $id)
+    public function destroy(string $id)
     {
         $climber  = Climber::findOrFail($id);
         $climber->delete();
 
-        return redirect()->route('climbers.index')->with('status', 'climber deleted successfully');
+        return redirect()->route('admin.climbers.index')->with('status', 'climber deleted successfully');
     }
 }

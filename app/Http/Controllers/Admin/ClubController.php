@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Route;
 use App\Models\Club;
+use App\Models\Climber;
+use Auth;
 
 class ClubController extends Controller
 {
@@ -14,7 +18,7 @@ class ClubController extends Controller
     {
         $clubs = Club::orderBy('created_at', 'desc')->paginate(800);
 
-        return view('clubs.index', [
+        return view('admin.clubs.index', [
             'clubs' => $clubs 
         ]);
     }
@@ -24,7 +28,10 @@ class ClubController extends Controller
      */
     public function create()
     {
-        return view('clubs.create');
+
+        $clubs = Club::all();
+
+        return view('admin.clubs.create');
     }
 
     /**
@@ -36,7 +43,7 @@ class ClubController extends Controller
         //dd($request->title)
 
         //validation rules
-        $rules =[
+        $rules =([
             'name'=> 'required|string|min:1|max:150',
             'location'=> 'required|string|min:1|max:1000',
             'number_of_walls'=> 'required|string|min:1|max:1000',
@@ -45,7 +52,7 @@ class ClubController extends Controller
             'cafe'=> 'required|string|min:1|max:1000',
 
 
-        ];
+        ]);
 
         $messages=[
             'name.unique'=>'club name should be unique'
@@ -63,7 +70,7 @@ class ClubController extends Controller
         $club->cafe = $request->cafe;
         $club->save();
 
-        return redirect()->route('clubs.index')->with('status', 'Created a new club');
+        return redirect()->route('admin.clubs.index')->with('status', 'Created a new club');
     }
 
     /**
@@ -72,7 +79,7 @@ class ClubController extends Controller
     public function show(string $id)
     {
         $club = Club::findOrFail($id);
-        return view('clubs.show', [
+        return view('admin.clubs.show', [
             'club' => $club
         ]);
     }
@@ -83,7 +90,7 @@ class ClubController extends Controller
     public function edit(string $id)
     {
         $club = Club::findOrFail($id);
-        return view('clubs.edit', [
+        return view('admin.clubs.edit', [
             'club' => $club
         ]);
     }
@@ -123,7 +130,7 @@ class ClubController extends Controller
             $club->save();
     
             return redirect()       
-                ->route('clubs.index')
+                ->route('admin.clubs.index')
                 ->with('status', ' Updated a club');
         
     }
@@ -131,11 +138,11 @@ class ClubController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(string $id)
+    public function destroy(string $id)
     {
         $club  = Club::findOrFail($id);
         $club->delete();
 
-        return redirect()->route('clubs.index')->with('status', 'club deleted successfully');
+        return redirect()->route('admin.clubs.index')->with('status', 'club deleted successfully');
     }
 }

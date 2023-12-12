@@ -61,7 +61,7 @@ Route::resource('/climbers', UserClimberController::class)
     ->names('user.climbers')
     ->only(['index', 'show']);
 
-Route::resource('/admin/climbers', AdminClimberController::class)->middleware(['auth', 'role:admin'])->names('admin.climbers');
+Route::resource('/admin/climbers', AdminClimberController::class)->middleware(['auth'])->names('admin.climbers');
 
 
 Route::resource('/clubs', UserClubController::class)
@@ -69,6 +69,6 @@ Route::resource('/clubs', UserClubController::class)
     ->names('user.clubs')
     ->only(['index', 'show']);
 
-Route::resource('/admin/clubs', AdminClubController::class)->middleware(['auth', 'role:admin'])->names('admin.clubs');
+Route::resource('/admin/clubs', AdminClubController::class)->middleware(['auth'])->names('admin.clubs');
 
 require __DIR__.'/auth.php';

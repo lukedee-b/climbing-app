@@ -9,6 +9,14 @@ class Route extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+    'grade',
+    'county',
+    'description',
+    'style',
+    'route_image',
+    ];
+
     public function climbers(){
         return hasMany(Climber::class);
     }

@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::Class,
             UserSeeder::Class,
             ClubSeeder::Class,
-            ClimberSeeder::Class,
             RouteSeeder::Class,
+            ClimberSeeder::Class,
+            
             
 
         ]);

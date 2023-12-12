@@ -11,7 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::table('routes', function (Blueprint $table) {
+            $table->string('route_image')->default('route.png');
+        });
     }
 
     /**
@@ -19,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('routes', function (Blueprint $table) {
+            //
+        });
     }
 };
